@@ -1,0 +1,287 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (max-width: 480px) {
+
+	header {
+        display: flex;
+        background-color: #202020;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    nav span {
+        display: table;
+        background-color: white;
+        padding: 1vw 5vw;
+        margin: 6px;
+        border-radius: 2px;
+        transition: 0.5s;
+    }
+
+    .menu-hamb {
+        float: left;
+        order: 1;
+        margin-left: 2.7vw;
+        z-index: 2;
+    }
+
+    #LogoSharts {
+        margin: 0 auto;
+        margin-top: 5px;
+        order: 2;
+        width: 30vw;
+    }
+
+    .perfil-login{
+        width: 10vw;
+        float: right;
+        margin: 8px 5vw 0 0;
+        order: 3;
+    }
+
+    #entrar-btn{
+        display: none;
+    }
+
+    #IconePerfil {
+        width: 100%;
+        margin-top: 10px ;
+        order: 3;
+    }
+
+    .menu input {
+        width: 11vw;
+        height: 11vw;
+        position: absolute;
+        top: 3.2vw;
+        left: 5.5vw;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 4;
+    }
+
+    .menu input:checked~ul {
+        transform: none;
+        z-index: 1;
+    }
+
+    .menu input:checked~.menu-hamb {
+        position: absolute;
+        top: 15px;
+        z-index: 3;
+    }
+
+    .menu input:checked~.menu-hamb span {
+        background-color: #202020;
+    }
+
+    .menu input:checked~.menu-hamb span:first-child {
+        display: none;
+    }
+
+    .menu input:checked~.menu-hamb span:nth-child(2) {
+        position: relative;
+        top: 14px;
+        transform: rotate(45deg);
+    }
+
+    .menu input:checked~.menu-hamb span:nth-child(3) {
+        transform: rotate(135deg);
+    }
+
+    nav ul {
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 198px;
+        height: 210px;
+        background-color: #f7334e;
+        border: none;
+        border-bottom-right-radius: 30px;
+        transform: translate(-110%, 0);
+        transition: transform 0.6s;
+        padding-top: 75px;
+        padding-bottom: -45px;
+        z-index: 1;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 30px;
+        background-color: white;
+        font-size: 1.1em;
+        border-radius: 20px;
+    }
+
+    .menu li {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 35px;
+        font-size: 1.3rem;
+
+    }
+	
+	/*----------main----------*/
+
+
+#LogoSharts-page{
+	display: block;
+	width: 30%;
+	margin: 80px auto 20px;
+}
+
+h1{
+	font-size: 1.4rem;
+	text-align: center;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+
+/*----------formulario----------*/
+
+form{
+	margin: 0 5vw;
+}
+
+form input{
+	display: block;
+	background-color: #d8d7d7;
+	font-size: 1.2rem;
+	padding: 0 5vw;
+	margin: 15px 0;
+	border-radius: 10px;
+	width: 80vw;
+	height: 50px;
+	outline: 0;
+}
+
+form input::placeholder{
+	font-size: 1.2rem;
+}
+
+form button{
+	width: 90vw;
+	font-size: 1.1rem;
+	background-color: #f7334e;
+	border-radius: 10px;
+	padding: 10px 50px;
+	color: white;
+}
+
+form a{
+	float: left;
+	font-size: 1.1rem;
+	margin-top: 10px;
+	color: #f7334e;
+}
+
+p{
+	font-size: 1.2rem;
+	color: #363636;
+	margin-top: 90px;
+	text-align: center;
+}
+
+
+/*----------Login alternativo----------*/
+
+.login-alternativo{
+	text-align: center;
+	margin-bottom: 70px;
+}
+
+.login-alternativo button{
+	font-size: 1.1rem;
+	padding: 0 8vw 0 11vw;
+	margin: 15px 0;
+	border: 2px solid black;
+	border-radius: 10px;	
+	width: 80vw;
+	height: 50px;
+	outline: 0;
+}
+
+.not-cadastro button{
+	border: 0;
+	background: rgb(255,0,188);
+	background: linear-gradient(90deg, rgba(255,0,188,1) 0%, rgba(255,112,1,1) 100%);
+	color: white;
+}
+
+/*rgba(255,112,1,1)rgba(255,0,188,1)*/
+
+.not-cadastro a{
+	text-decoration: none;
+}
+
+.login-alternativo img{
+	position: absolute;
+	margin: 28px 0 0 15px;
+	width: 25px;
+	height: 25px;
+}
+
+/*---Rodapé---*/
+
+footer{
+	background-color: #424242;
+	height: 550px;
+}
+
+.blocofooter{
+	width: 90vw;
+	margin: 0 auto;
+	padding-top: 1vw;
+}
+
+.ShartsGroup{
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	width: 90vw;
+}
+
+#LogoShartsFooter{
+	float: left;
+	margin: 0px 0;
+	width: 20%;
+}
+
+footer h2{
+	color: white;
+	margin-left: 5px;
+	float: left;
+}
+
+.redes-sociais-contato{
+	margin-left: auto;
+}
+
+.redes-sociais-contato img{
+	float: right;
+	margin-left: 20px;
+	width: 30px;
+}
+
+footer li{
+	margin: 20px 0;
+	color: white;
+}
+
+footer a{
+	text-decoration: none;
+	color: white;
+}
+
+}

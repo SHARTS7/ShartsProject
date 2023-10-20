@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (min-width: 1201px) {
+
+	header{
+		background-color: #202020;
+		width: 100%;
+		height: 52px;
+	}
+	
+	.menu span, input{
+		display: block;
+	}
+	
+	#LogoSharts img{
+		float: left;
+		order: 1;
+		margin: 8px;
+		width: 79.11px;
+		height: 38.05px;
+	}
+	
+	.menu input {
+		position: absolute;
+		top: -100vw;
+	}
+	
+	#IconePerfil img{
+		width: 38px;
+		margin: 8px;
+		float: right;
+	}
+	
+	#IconePerfil:hover{
+		opacity: .8;
+	}
+	
+	nav ul{
+		float: left;
+		order: 2;
+		padding: 14px 14px;
+	}
+	
+	.menu a {
+		text-decoration: none;
+		color: rgb(255, 255, 255);
+	}
+	
+	.menu li {
+		position: relative;
+		display: inline-block;
+		font-size: 0.8rem;
+		margin-left: 30px;
+	}
+	
+	.menu li:hover{
+		border-bottom: 3px solid #f7334e;
+		transition-duration: 0.1s;
+	}
+
+/*----------main----------*/
+
+#LogoSharts-page{
+	display: block;
+	width: 7%;
+	margin: 50px auto 20px auto;
+}
+
+h1{
+	font-size: 1rem;
+	text-align: center;
+	font-weight: 600;
+	margin-bottom: 50px;
+}
+
+/*----------formulario----------*/
+
+form{
+	margin: 0 5vw;
+    text-align: center;
+}
+
+form input{
+	display: block;
+	background-color: #d8d7d7;
+	font-size: 1rem;
+	padding: 10px 20px;
+	margin: 15px auto 15px auto;
+	border-radius: 10px;
+	width: 20%;
+	outline: 0;
+}
+
+form input[type="date"]{
+	display: block;
+	padding: auto 0;
+    margin: 5px auto 5px auto;
+}
+
+form input::placeholder{
+	margin-top: 10px;
+	font-size: 1rem;
+}
+
+label{
+	font-size: 1rem;
+    margin-right: 10%;
+}
+
+.termos-e-condicoes{
+	display: flex;
+    align-items: center;
+    padding: 10px 20px;
+	font-size: 0.8rem;
+	width: 20%;
+	margin: 15px auto;
+}
+
+.termos-e-condicoes p{
+	color: #363636;
+}
+
+.termos-e-condicoes a{
+	margin-top: 5px;
+	color: #f7334e;
+}
+
+#termos-check{ 
+	margin: 0;
+}
+
+.menu input:checked~.menu-hamb {
+	position: absolute;
+	top: 15px;
+	z-index: 3;
+}
+
+
+form button{
+	width: 20%;
+    margin: 0 auto;
+	font-size: 1rem;
+	background-color: #f7334e;
+	border-radius: 10px;
+    padding: 10px 20px;
+	color: white;
+}
+
+#ou{
+	font-size: 1.2rem;
+	color: #363636;
+	margin-top: 50px;
+	text-align: center;
+}
+
+
+/*----------Login alternativo----------*/
+
+.login-alternativo{
+	text-align: center;
+	margin-bottom: 70px;
+}
+
+.login-alternativo button{
+	font-size: 1rem;
+	padding: 10px 5px 10px 20px;
+	margin: 15px auto;
+	border: 2px solid black;
+	border-radius: 10px;
+    white-space: nowrap;
+	width: 20%;
+	outline: 0;
+}
+
+.fzr-login button{
+	border: 0;
+	background: rgb(255,0,188);
+	background: linear-gradient(90deg, rgba(255,0,188,1) 0%, rgba(255,112,1,1) 100%);
+	color: white;
+}
+.fzr-login button:hover{
+	background: linear-gradient(90deg, rgb(200, 1, 147) 0%, rgb(184, 80, 0)100%);
+}
+
+/*rgba(255,112,1,1)rgba(255,0,188,1)*/
+
+.fzr-login a{
+	text-decoration: none;
+}
+
+.login-alternativo img{
+	position: absolute;
+	margin: 28px 0 0 15px;
+	width: 20px;
+	height: 20px;
+}
+
+#fzr-login{
+	margin-top: 26px;
+}
+/*---Rodapé---*/
+
+footer{
+	background-color: #424242;
+	height: 550px;
+}
+
+.blocofooter{
+	width: 90vw;
+	margin: 0 auto;
+	padding-top: 1vw;
+}
+
+.ShartsGroup{
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	width: 90vw;
+}
+
+#LogoShartsFooter{
+	float: left;
+	margin: 0px 0;
+	width: 10%;
+}
+
+footer h2{
+	color: white;
+	margin-left: 5px;
+	float: left;
+}
+
+.redes-sociais-contato{
+	margin-left: auto;
+}
+
+.redes-sociais-contato img{
+	float: right;
+	margin-left: 20px;
+	width: 30px;
+}
+
+footer li{
+	margin: 20px 0;
+	color: white;
+}
+
+footer a{
+	text-decoration: none;
+	color: white;
+}
+
+
+}
+
+.erro{
+    background-color: rgb(251, 223, 223);
+    border: 2px solid red;
+    border-radius: 7px;
+	color: red;
+}

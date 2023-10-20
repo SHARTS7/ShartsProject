@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharts</title>
+    <link rel="shortcut icon" href="icons/logoresponsivaA.svg">
+    <link rel="stylesheet" href="css/style-home_mb.css">
+    <link rel="stylesheet" href="css/style_mb.css">
+    <link rel="stylesheet" href="css/style-home_pc.css">
+    <link rel="stylesheet" href="css/style_pc.css">
+    <link rel="stylesheet" href="css/style-home_tablett.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/notify.js"></script>
+</head>
+
+<body>
+
+    <header>
+
+        <a href="/" id="LogoSharts"><img src="icons/Logotipo-sharts.svg" alt="Logotipo Sharts"></a>
+
+        <nav class="menu">
+            <input type="checkbox">
+            <div class="menu-hamb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul>
+                <li><a href="/radio">Radio</a></li>
+                <li><a href="#contato-ancora">Contato</a></li>
+                <% if (tipo_usuario === 2) { %>
+                    <li><a href="/painel_adm" id="padm-btn-menu">Painel Administrativo</a></li>
+                <% } %>
+            </ul>
+
+        </nav>
+
+        <div class="perfil-login">
+
+            <a href="#" id="entrar-btn"><span><%= autenticado.autenticado %></span></a>
+            <!-- <a href="#" id="IconePerfil"><img src="icons/profile.svg" alt="Ícone de Perfil do usuário"></a> -->
+            <% if(autenticado.autenticado){
+                if(login){%>
+               <script>
+                   notify("Login efetuado com sucesso", "Olá <%= autenticado.autenticado%>", "success", "center")                        
+               </script>
+               <% } 
+        
+               let arquivo = {"imagem":"imagens/img-perfil.png"};
+        
+               if(img_perfil_pasta != null){ 
+                    arquivo.imagem = img_perfil_pasta;
+               }
+           %>
+        
+
+           <div class="perfil-radius">
+            <div></div>
+            <a href="#" id="IconePerfil"><img class="icone-perfil" src="<%= arquivo.imagem %>"></a>
+        </div>
+        
+            <% }else{ %>
+                <a href="#" id="IconePerfil"><img src="icons/profile.svg" id="nologin-img" alt="Ícone de Perfil do usuário"></a>
+            <% } %>
+        </div>
+
+        <nav id="u-sessao">
+            <ul>
+                <li id="login-btn"><a href="/login"><span class="material-icons">login</span>Login</a></li>
+                <li id="cadastro-btn"><a href="/cadastro-page"><span class="material-icons">add_circle_outline</span>Cadastrar-se</a></li>
+                <% if(autenticado.autenticado){
+                    %>
+
+               <script>
+                var btn_login = document.getElementById("login-btn");
+                btn_login.style.display = "none";
+
+                var btn_cadastro = document.getElementById("cadastro-btn");
+                btn_cadastro.style.display = "none";
+               </script>
+               <li><a href="/perfil"><span class="material-icons">person_outline</span>Meu perfil</a></li>
+                <li><a href="/sair" method="POST" id="sair-btn"><span class="material-icons">logout</span>Sair</a></li>
+            
+                <% }else{ %>
+
+                <% } %>
+
+                <!-- <li><a href="/sair" method="POST" id="sair-btn">Sair</a></li> -->
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <div class="search">
+            <input type="text" id="pesquisa" placeholder="Pesquisar">
+            <span class="material-symbols-outlined" onclick="abrirPopUp()" id="filter"> filter_alt </span>
+        </div>
+
+        <div class="pop-up">
+            <div class="modal">
+                <hr />
+                    <h2>Selecione os filtros que deseja utilizar:</h2>
+                    <span>Por categoria:</span>
+                    <select name="fitler-cat" id="fitler-cat">
+                        <option value="artesvisuais">Artes Visuais</option>
+                        <option value="cinema">Cinema</option>
+                        <option value="danca">Dança</option>
+                        <option value="musica">Música</option>
+                        <option value="teatro">Teatro</option>
+                        <option value="fotografia">Fotografia</option>
+                    </select>
+
+                    <br>
+
+                    <div class="filter-option">
+                        <span>Por relevância:</span>
+                        <input type="checkbox" name="" id="p-relevancia">
+                    </div>
+
+                    <div class="filter-option">
+                        <span>Por data de envio:</span>
+                        <input type="checkbox" name="" id="p-dataenv">
+                    </div>
+
+                    <script>
+                        let p_relevancia = document.querySelector("#p-relevancia");
+                        let p_dataenv = document.querySelector("#p-dataenv");
+
+                        p_relevancia.addEventListener("click", function() {
+                            if (p_relevancia.checked) {
+                                p_dataenv.checked = false; // Desmarca a outra opção
+                            }
+                        });
+
+                        p_dataenv.addEventListener("click", function() {
+                            if (p_dataenv.checked) {
+                                p_relevancia.checked = false; // Desmarca a outra opção
+                            }
+                        });
+                    </script>
+
+                    <div class="filter-option">
+                        <span>Vídeos</span>
+                        <input type="checkbox" name="" id="">
+                    </div>
+
+                    <div class="filter-option">
+                        <span>Aúdios</span>
+                        <input type="checkbox" name="" id="">
+                    </div>
+                    
+                <hr/>
+                <div class="btns">
+                    <button class="btn-sim">Pesquisar</button>
+                    <button class="btn-nao" onclick="closePopUp()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+                function abrirPopUp(){
+                    const modal = document.querySelector(".pop-up");
+                    modal.classList.add('active');
+                }
+
+                function closePopUp() {
+                    document.querySelector(".pop-up").classList.remove("active");
+                }
+        </script>
+
+        <div class="slider">
+
+            <div class="slides">
+
+                <!-----SlideButtons----->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!-----SlideButtons----->
+
+
+                <!-----ImagensSlides----->
+                <div class="slide first" id="slide1">
+                    <a href="#"><img src="imagens\Slide_2.png" alt="Imagem 1"></a>
+                </div>
+
+                <div class="slide" id="slide2">
+                    <a href="#"><img src="imagens\Slide_1.png" alt="Imagem 2"></a>
+                </div>
+
+                <div class="slide" id="slide3">
+                    <a href="#"><img src="imagens\Slide_3.png" alt="Imagem 3"></a>
+                </div>
+
+                <div class="slide" id="slide4">
+                    <a href="#"><img src="imagens\Slide_4.png" alt="Imagem 4"></a>
+                </div>
+                <!-----Imagens Slides----->
+
+                <!-----Auto Navegação----->
+                <div class="autonav">
+                    <div class="btn1"></div>
+                    <div class="btn2"></div>
+                    <div class="btn3"></div>
+                    <div class="btn4"></div>
+                </div>
+
+            </div>
+
+            <!-----Navegação Manual----->
+            <div class="manual-nav">
+                <label for="radio1" class="MBtn"></label>
+                <label for="radio2" class="MBtn"></label>
+                <label for="radio3" class="MBtn"></label>
+                <label for="radio4" class="MBtn"></label>
+
+            </div>
+
+        </div>
+
+        <h3 id="perfis-title">Principais perfis</h3>
+
+        <section class="rolagem-perfis">
+
+            <div class="perfis">
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil1.jpg"></a>
+                    <figcaption><a href="">Adriana</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil2.jpg"></a>
+                    <figcaption><a href="#">Arthur</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil3.png"></a>
+                    <figcaption><a href="#">VEVO</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil4.png"></a>
+                    <figcaption><a href="#">M+</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil5.jpg"></a>
+                    <figcaption><a href="#">Beatriz</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil6.jpg"></a>
+                    <figcaption><a href="#">Juliana</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil7.jpg"></a>
+                    <figcaption><a href="#">Fernanda</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil8.jpg"></a>
+                    <figcaption><a href="#">Heitor</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil9.jpg"></a>
+                    <figcaption><a href="#">Paulo e Rafaela</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil5.jpg"></a>
+                    <figcaption><a href="#">Andréia</a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="/usuario"><img src="imagens/perfil1.jpg"></a>
+                    <figcaption><a href="#">Carla</a></figcaption>
+                </figure>
+
+            </div>
+
+        </section>
+
+        <h1>Postagens</h1>
+
+        <section class="posts">
+
+            <section class="userpost" id="post1">
+
+                <a href="#"><img src="imagens/perfil2.jpg"></a>
+                <p class="titulopost">Arthur<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe src="https://www.youtube.com/embed/3TLSrI_hXEw" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post2">
+
+                <a href="#"><img src="imagens/perfil4.png"></a>
+                <p class="titulopost">M+<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="90%" height="230" src="https://www.youtube.com/embed/WT9jOZLFaEY"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post3">
+
+                <a href="#"><img src="imagens/perfil3.png"></a>
+                <p class="titulopost">VEVO<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="90%" height="230" src="https://www.youtube.com/embed/GcqjVOZAybw"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post4">
+
+                <a href="#"><img src="imagens/perfil2.jpg"></a>
+                <p class="titulopost">Arthur<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/TSOQRUUMyBA"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post5">
+
+                <a href="#"><img src="imagens/perfil4.png"></a>
+                <p class="titulopost">M+<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/yf0B4rVoq44"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post6">
+
+                <a href="#"><img src="imagens/perfil3.png"></a>
+                <p class="titulopost">VEVO<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/9OtihrZ9220"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post7">
+
+                <a href="#"><img src="imagens/perfil2.jpg"></a>
+                <p class="titulopost">Arthur<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe src="https://www.youtube.com/embed/3TLSrI_hXEw" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post8">
+
+                <a href="#"><img src="imagens/perfil4.png"></a>
+                <p class="titulopost">M+<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="90%" height="230" src="https://www.youtube.com/embed/WT9jOZLFaEY"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post9">
+
+                <a href="#"><img src="imagens/perfil3.png"></a>
+                <p class="titulopost">VEVO<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="90%" height="230" src="https://www.youtube.com/embed/GcqjVOZAybw"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post10">
+
+                <a href="#"><img src="imagens/perfil2.jpg"></a>
+                <p class="titulopost">Arthur<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/TSOQRUUMyBA"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post11">
+
+                <a href="#"><img src="imagens/perfil4.png"></a>
+                <p class="titulopost">M+<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/yf0B4rVoq44"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+            <section class="userpost" id="post12">
+
+                <a href="#"><img src="imagens/perfil3.png"></a>
+                <p class="titulopost">VEVO<span> > </span> <a href="#">Música</a></p>
+
+                <h4 id="tvideo">Titulo do video do Artista</h4>
+
+                <div class="bg-gray-video"></div>
+
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/9OtihrZ9220"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+
+                <input type="text" id="coment" placeholder="comentar" onclick='openComents()'>
+                <span id="submit-coment"></span>
+
+                <div class="post-functions">
+
+                    <div class="curtir">
+
+                        <input type="checkbox" id="ip-curtir">
+                        <img src="icons/IconLike.svg" id="like">
+                        <img src="icons/IconLikePreenchido.svg" id="likep">
+                    </div>
+
+                    <img src="icons/descricaoicon.svg" id="msg">
+
+                    <img src="icons/IconShare.svg" id="share">
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <section id="coments-modal" class="coments-modal">
+
+            <div class="coments-block">
+            <div class="coments-section">
+
+                <div class="bloco-coment-int">
+                    <div class="coment-section">
+
+                        <figure class="perfil-coment">
+                            <img src="imagens/perfil6.jpg" id="perfil-coment-img" alt="perfil-coment-img">
+                            <figcaption id="title-perfil-coment">Marisa</figcaption>
+                        </figure>
+
+                    </div>
+                </div>
+
+                <div class="bloco-coment-int">
+                    <div class="coment-content">
+                        <p>Gostei muito do vídeo!!! O conteúdo é bem interessante, tudo incrível!</p>
+                    </div>
+
+                    <figure class="perfil-coment">
+                        <img src="imagens/perfil5.jpg" id="perfil-coment-img" alt="perfil-coment-img">
+                        <figcaption id="title-perfil-coment">Bruna</figcaption>
+                    </figure>
+
+                    <div class="coment-content">
+                        <p>Gostei muito do vídeo!!! Vídeo de grande relevância!</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="digite-coment"></div>
+        </div>
+
+            </div>
+
+
+        </section>
+
+        </section>
+
+        <div class="audio" id="audio-box-1">
+
+            <div class="audioperfil">
+                <img src="imagens/perfil6.jpg">
+                <p>Marisa<span> > Música</span></p>
+                <button>PRO</button>
+            </div>
+
+            <img src="imagens/TeatroAD.jpg">
+            <h2>Lovesong</h2>
+            <h4>Leo Utah</h2>
+
+                <audio src="Canon in D (Pachelbel) - Violin & Piano (128 kbps).mp3" controls></audio>
+
+        </div>
+
+        <div class="audio" id="audio-box-2">
+
+            <div class="audioperfil">
+                <img src="imagens/perfil2.jpg">
+                <p>Tiago<span> > Música<span></p>
+                <button>PRO</button>
+            </div>
+
+            <img src="imagens/7radio.jpg">
+            <h2>Lovesong</h2>
+            <h4>Leo Utah</h2>
+
+                <audio src="Canon in D (Pachelbel) - Violin & Piano (128 kbps).mp3" controls></audio>
+
+        </div>
+
+        <h3 id="categorias-title">Categorias que talvez goste</h3>
+
+        <section class="rolagem-categorias">
+
+            <div class="categorias">
+
+                <a href="/shartscinema"><img src="imagens/CINEMA.png"></a>
+
+                <a href="/shartsdanca"><img src="imagens/DANCA.png"></a>
+
+                <a href="/shartsmusica"><img src="imagens/MUSICA.png"></a>
+
+                <a href="/shartsteatro"><img src="imagens/TEATRO.png"></a>
+
+                <a href="/shartsfotografia"><img src="imagens/FOTOGRAFIA.png"></a>
+
+                <a href="/shartsartesvisuais"><img src="imagens/ARTES-VISUAIS.png"></a>
+
+            </div>
+
+        </section>
+
+        <div class="radioperfil">
+            <h3>Rádios dos artistas</h3>
+            <button>PRO</button>
+        </div>
+
+        <section class="radioarts">
+
+            <div class="a-radios">
+
+                <figure>
+                    <a href="#"><img src="imagens/1radio.jpg"></a>
+                    <figcaption>1° Radio</figcaption>
+                    <figure>
+
+                        <figure>
+                            <a href="#"><img src="imagens/2radio.jpg"></a>
+                            <figcaption>2° Radio</figcaption>
+                            <figure>
+
+                                <figure>
+                                    <a href="#"><img src="imagens/3radio.jpg"></a>
+                                    <figcaption>3° Radio</figcaption>
+                                    <figure>
+
+                                        <figure>
+                                            <a href="#"><img src="imagens/4radio.jpg"></a>
+                                            <figcaption>4° Radio</figcaption>
+                                            <figure>
+
+                                                <figure>
+                                                    <a href="#"><img src="imagens/5radio.jpg"></a>
+                                                    <figcaption>5° Radio</figcaption>
+                                                    <figure>
+
+                                                        <figure>
+                                                            <a href="#"><img src="imagens/6radio.jpg"></a>
+                                                            <figcaption>6° Radio</figcaption>
+                                                            <figure>
+
+                                                                <figure>
+                                                                    <a href="#"><img src="imagens/7radio.jpg"></a>
+                                                                    <figcaption>7° Radio</figcaption>
+                                                                    <figure>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="blocofooter">
+
+            <div class="ShartsGroup">
+                <img src="icons/Logotipo-sharts.svg" id="LogoShartsFooter" alt="Logotipo Sharts">
+                <h2>Group</h2>
+
+                <div class="redes-sociais-contato">
+
+                    <span id="contato-ancora"></span>
+
+                    <a href="#"><img src="icons/facebook.png" alt="Logo facebook"></a>
+                    <a href="#"><img src="icons/instagram.png" alt="Logo instagram"></a>
+                    <a href="#"><img src="icons/reddit.png" alt="Logo reddit"></a>
+
+                </div>
+            </div>
+
+            <ul>
+                <li><a href="/sobrenos">Sobre nós</a></li>
+                <li><a href="#">Sharts Music+</a></li>
+                <li><a href="#">Sharts para artistas</a></li>
+                <li><a href="/termosECond">Termos e condições</a></li>
+                <li>2022</li>
+            </ul>
+
+        </div>
+
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/script_menu.js"></script>
+</body>
+
+</html>

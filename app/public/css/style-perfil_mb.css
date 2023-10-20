@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (max-width: 480px) {
+
+	header {
+        display: flex;
+        background-color: #202020;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    nav span {
+        display: table;
+        background-color: white;
+        padding: 1vw 5vw;
+        margin: 6px;
+        border-radius: 2px;
+        transition: 0.5s;
+    }
+
+    .menu-hamb {
+        float: left;
+        order: 1;
+        margin-left: 2.7vw;
+        z-index: 2;
+    }
+
+    #LogoSharts {
+        margin: 0 auto;
+        margin-top: 5px;
+        order: 2;
+        width: 30vw;
+    }
+
+    .perfil-login{
+        width: 10vw;
+        float: right;
+        margin: 8px 5vw 0 0;
+        order: 3;
+    }
+
+    #entrar-btn{
+        display: none;
+    }
+
+    #IconePerfil {
+        width: 100%;
+        margin-top: 10px ;
+        order: 3;
+    }
+
+    .menu input {
+        width: 11vw;
+        height: 11vw;
+        position: absolute;
+        top: 3.2vw;
+        left: 5.5vw;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 4;
+    }
+
+    .menu input:checked~ul {
+        transform: none;
+        z-index: 1;
+    }
+
+    .menu input:checked~.menu-hamb {
+        position: absolute;
+        top: 15px;
+        z-index: 3;
+    }
+
+    .menu input:checked~.menu-hamb span {
+        background-color: #202020;
+    }
+
+    .menu input:checked~.menu-hamb span:first-child {
+        display: none;
+    }
+
+    .menu input:checked~.menu-hamb span:nth-child(2) {
+        position: relative;
+        top: 14px;
+        transform: rotate(45deg);
+    }
+
+    .menu input:checked~.menu-hamb span:nth-child(3) {
+        transform: rotate(135deg);
+    }
+
+    nav ul {
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 198px;
+        height: 210px;
+        background-color: #f7334e;
+        border: none;
+        border-bottom-right-radius: 30px;
+        transform: translate(-110%, 0);
+        transition: transform 0.6s;
+        padding-top: 75px;
+        padding-bottom: -45px;
+        z-index: 1;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 30px;
+        background-color: white;
+        font-size: 1.1em;
+        border-radius: 20px;
+    }
+
+    .menu li {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 35px;
+        font-size: 1.3rem;
+
+    }
+
+	
+/*----------main----------*/
+
+.text-editp h4{
+	background-color: #202020;
+	width: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+	color: white;
+}
+
+#text-editp2{
+	text-align: center;
+	margin: 10px;
+	color: rgb(131, 131, 131);
+
+}
+
+label{
+	margin: 20px;
+}
+
+input{
+	display: block;
+    padding: 0 5vw;
+    font-size: 1rem;
+	margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: #d8d7d7;
+    color: #2b2b2b;
+	padding: 15px 10px 15px 10px;
+	border-radius: 10px;
+	width: 90vw;
+    outline: none;
+}
+
+label[for="categoria"]{
+    color: #f7334e;
+}
+
+#categoria{
+    border-radius: 20px;
+    padding: 10px;
+	border: 2px solid #f7334e;
+    color: #f7334e;
+    text-align: center;
+    font-size: 1.2rem;
+    display: block;
+    margin: 0 auto;
+	width: 95vw;
+    outline: none;
+}
+
+#bio{
+    height: 100px;
+	text-align: center;
+}
+
+.funcoes-finais{
+    display: grid;
+    grid-template-columns: 3% 45% 4% 45% 3%;
+    grid-template-rows: 50px;
+    margin-bottom: 50px;
+}
+
+#cancelar-btn{
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    border-radius: 30px;
+}
+
+#aplicar-btn{
+    grid-column-start: 4;
+    grid-column-end: 4;
+    border-radius: 30px;
+    background: linear-gradient(90deg, rgba(255,0,188,1) 0%, rgba(255,112,1,1) 100%);
+    color: white;
+}
+
+button:hover {
+    opacity: .8;
+}
+
+#exc_conta{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	padding: 10px 0;
+    border-radius: 30px;
+    background-color: #f7334e;
+    color: white;
+	cursor: pointer;
+	width: 90vw;
+}
+
+
+/*---Rodapé---*/
+
+footer{
+    margin-top: 100px;
+	background-color: #424242;
+	height: 550px;
+}
+
+.blocofooter{
+	width: 90vw;
+	margin: 0 auto;
+	padding-top: 1vw;
+}
+
+.ShartsGroup{
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	width: 90vw;
+}
+
+#LogoShartsFooter{
+	float: left;
+	margin: 0px 0;
+	width: 20%;
+}
+
+footer h2{
+	color: white;
+	margin-left: 5px;
+	float: left;
+}
+
+.redes-sociais-contato{
+	margin-left: auto;
+}
+
+.redes-sociais-contato img{
+	float: right;
+	margin-left: 20px;
+	width: 30px;
+}
+
+footer li{
+	margin: 20px 0;
+	color: white;
+}
+
+footer a{
+	text-decoration: none;
+	color: white;
+}
+
+}

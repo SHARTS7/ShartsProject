@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+h3{
+	margin: 10px auto;
+	text-align: center;
+}
+
+h1{
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	vertical-align: center;
+	color: #e9e9e9;
+	background: linear-gradient(90deg, rgba(255,0,188,1) 0%, rgba(255,112,1,1) 100%);
+	text-align: center;
+}
+
+a{
+	display: flex;
+	margin: 10px auto;
+	justify-content: center;
+	background: linear-gradient(90deg, rgba(255,0,188,1) 0%, rgba(255,112,1,1) 100%);
+	color: white;
+	padding: 10px 20px;
+	border-radius: 30px;
+	width: 200px;
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+}
+
+a:hover{
+	transform: rotateY(-360deg);
+	background: linear-gradient(90deg, rgb(223, 9, 166) 0%, rrgb(211, 98, 12)100%);
+	transition: 2s;
+}

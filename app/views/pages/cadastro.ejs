@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharts - Login</title>
+    <link rel="shortcut icon" href="icons/logoresponsivaA.svg">
+    <link rel="stylesheet" href="css/style_mb.css">
+    <link rel="stylesheet" href="css/style_pc.css">
+    <link rel="stylesheet" href="css/style-cad_mb.css">
+    <link rel="stylesheet" href="css/style-cad_pc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <script src="js/notify.js"></script>
+</head>
+
+<body>
+    <header>
+
+        <a href="/" id="LogoSharts"><img src="icons/Logotipo-sharts.svg" alt="Logotipo Sharts"></a>
+
+        <nav class="menu">
+            <input type="checkbox">
+            <div class="menu-hamb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/radio">Radio</a></li>
+                <li><a href="#contato-ancora">Contato</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="perfil-login">
+
+            <a href="#" id="entrar-btn">Entrar</a>
+
+            <a href="#" id="IconePerfil"><img src="icons/profile.svg" alt="Ícone de Perfil do usuário"></a>
+
+        </div>
+        
+        <nav id="u-sessao">
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/perfil">Meu perfil</a></li>
+                <li><a href="/sair" method="POST" id="sair-btn">Sair</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <img src="icons/Logotipo-sharts.svg" id="LogoSharts-page" alt="Logotipo Sharts">
+        <h1>Bem Vindo (a) ao Sharts</h1>
+
+        <% 
+    let msgErro = {"nome":"", "senha":"", "email": ""}
+    let avisoErro = {"nome":"", senha:"", "email": ""}
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nome"){
+                avisoErro.nome = "erro";
+                msgErro.nome += " "+itemErro.msg
+            %>
+            <script>
+                notify("Erro no preenchimento","Verifique o campo nome<br><%= itemErro.msg%>", "error", "center")                        
+            </script>
+            <%
+        }
+            if(itemErro.path == "senha"){
+                avisoErro.senha = "erro";
+                msgErro.senha = itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <% 
+            }
+            if(itemErro.path == "email"){
+                avisoErro.email = "erro";
+                msgErro.email = itemErro.msg
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo e-mail<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+        })
+    }
+    if (dadosNotificacao) { %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){window.location="/"}, 3000)
+                }                        
+        </script>
+    <% } %>
+
+        <form action="/cadastro" method="POST">
+
+            <input type="text" name="email" placeholder="E-mail *" value="<%= valores.email %>" class="<%= avisoErro.email %>" required>
+            <!-- <span> <%= msgErro.email %> </span> -->
+
+            <input type="password" name="senha" placeholder="Crie uma senha *" value="<%= valores.senha %>" class="<%= avisoErro.senha %>" required>
+            <!-- <span> <%= msgErro.senha %> </span> -->
+
+            <input type="text" name="nome" placeholder="Crie um nome de usuário @ * <%= msgErro.nome %>" value="<%= valores.nome%>" class="<%= avisoErro.nome %>" required>
+            <!-- <span> <%= msgErro.nome %> </span> -->
+
+            <label for="datan">Data de Nascimento</label>
+            <input type="date" name="datan" placeholder="dd/MM/aaaf3a" required>
+
+            <div class="termos-e-condicoes">
+                <input type="checkbox" name="termos-check" id="termos-check" required>
+                <p>Concordo com os <a href="/termosECond">Termos e Condições</a> do Sharts</p>
+            </div>
+
+            <button type="submit" id="btn-cad">Cadastrar</button>
+
+        </form>
+
+        <p id="ou">ou</p>
+
+        <section class="login-alternativo">
+
+            <div class="cont-facebook">
+                <img src="icons/facebookcolored.png" id="facebook-login">
+                <button>Continue com o Facebook</button>
+            </div>
+
+            <div class="cont-google">
+                <img src="icons/googlecolored.png" id="google-login">
+                <button>Continue com o Google</button>
+            </div>
+
+            <div class="fzr-login">
+                <img src="icons/profile.svg" id="fzr-login">
+                <a href="/login"><button>Fazer Login</button></a>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="blocofooter">
+
+            <div class="ShartsGroup">
+                <img src="icons/Logotipo-sharts.svg" id="LogoShartsFooter" alt="Logotipo Sharts">
+                <h2>Group</h2>
+
+                <div class="redes-sociais-contato">
+
+                    <span id="contato-ancora"></span>
+
+                    <a href="#"><img src="icons/facebook.png" alt="Logo facebook"></a>
+                    <a href="#"><img src="icons/instagram.png" alt="Logo instagram"></a>
+                    <a href="#"><img src="icons/reddit.png" alt="Logo reddit"></a>
+
+                </div>
+            </div>
+
+            <ul>
+                <li><a href="/sobrenos">Sobre nós</a></li>
+                <li><a href="#">Sharts Music+</a></li>
+                <li><a href="#">Sharts para artistas</a></li>
+                <li><a href="/termosECond">Termos e condições</a></li>
+                <li>2022</li>
+            </ul>
+
+        </div>
+
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/script_menu.js"></script>
+
+</body>
+
+</html>

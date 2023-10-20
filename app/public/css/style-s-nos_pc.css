@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (min-width: 481px) {
+
+/*----------main----------*/
+
+.s_nos{
+    margin: 0 auto;
+    width: 500px;
+}
+
+#img_sobrenos{
+    width: 100%;
+}
+
+.s_nos p{
+    text-align: center;
+    width: 500px;
+    margin: 10px 20px;
+}
+
+/*---Categorias---*/
+
+#categorias-title{
+	margin: 30px 0 15px 5vw;
+	font-weight: bold;
+}
+
+.rolagem-categorias{
+	margin: 15px auto;
+	width: 90vw;
+	height: 30vw;
+	overflow: hidden;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+}
+
+.rolagem-categorias::-webkit-scrollbar { 
+	display: none;
+}
+
+.categorias{
+	display: flex;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.categorias figcaption{
+	margin-top: 175px;
+	margin-left: -110px;
+	font-size: 1.2rem;
+}
+
+.categorias img{
+	margin: 10px;
+	border-radius: 30px;
+	width: 13.5vw; 
+	height: 13.5vw;
+	scroll-snap-align: start;
+	transition: 0.5s;
+}
+
+.categorias img:hover{
+	transform: scale(105%);
+	box-shadow: 3px 5px 0px #858585;
+}
+
+}
+
+
+
+
+/*Comentário-posts*/
+
+#coment{
+	display: flex;
+	align-items: center;
+	background-color: #dcdcdc;
+	margin: 2px 3px 2px 0;
+	padding: 0 20px 0 20px;
+	border-radius: 50px;
+	grid-column-start: 1;
+	grid-column-end: 4;
+	grid-row-start: 6;
+	grid-row-end: 6;
+	outline: none;
+}
+
+#submit-coment{
+	display: flex;
+	align-items: center;
+	border-left: 20px solid #f7334e;
+	width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+	grid-column-start: 3;
+	grid-column-end: 3;
+	grid-row-start: 6;
+	grid-row-end: 6;
+	margin: auto 0 auto 80%;
+	border-radius: 10px;
+}
+
+#submit-coment:hover{
+	border-left: 20px solid #ff586e;
+	cursor: pointer;
+}
+
+/*------*/
+
+.coments-modal{
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transform: scaleY(-1);
+  z-index: 1000;
+  background-color: #131313a5;
+}
+
+.coments-modal div{
+	background-color: rgba(255, 255, 255, 0.86);
+	margin: auto;
+	border-radius: 40px;
+	width: 450px;
+	height: 80%;
+	transition-duration: 1s;
+}
+
+.coments-modal.abrir{
+	display: flex;
+}

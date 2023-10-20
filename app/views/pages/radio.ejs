@@ -1,0 +1,238 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sharts - Radio</title>
+        <link rel="shortcut icon" href="icons/logoresponsivaA.svg">
+        <link rel="stylesheet" href="css/style-radio_mb.css">
+        <link rel="stylesheet" href="css/style-radio_pc.css">
+        <link rel="stylesheet" href="css/style_mb.css">
+        <link rel="stylesheet" href="css/style_pc.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="js/notify.js"></script>
+    </head>
+    <body>
+        <header>
+
+            <a href="/" id="LogoSharts"><img src="icons/Logotipo-sharts.svg" alt="Logotipo Sharts"></a>
+    
+            <nav class="menu">
+                <input type="checkbox">
+                <div class="menu-hamb">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+    
+                <ul>
+                    <li><a href="/radio">Radio</a></li>
+                    <li><a href="#contato-ancora">Contato</a></li>
+                </ul>
+    
+            </nav>
+    
+            <div class="perfil-login">
+    
+                <a href="#" id="entrar-btn"><span><%= autenticado %></span></a>
+                <!-- <a href="#" id="IconePerfil"><img src="icons/profile.svg" alt="Ícone de Perfil do usuário"></a> -->
+                <% if(autenticado){
+                    if(login){%>
+                   <script>
+                       notify("Login efetuado com sucesso", "Olá <%= autenticado%>", "success", "center")                        
+                   </script>
+                   <% } 
+            
+                   let arquivo = {"imagem":"imagens/img-perfil.png"};
+            
+                   if(img_perfil_pasta != null){ 
+                        arquivo.imagem = img_perfil_pasta;
+                   }
+               %>
+            
+    
+               <div class="perfil-radius">
+                <div></div>
+                <a href="#" id="IconePerfil"><img class="icone-perfil" src="<%= arquivo.imagem %>"></a>
+            </div>
+            
+                <% }else{ %>
+                    <a href="#" id="IconePerfil"><img src="icons/profile.svg" id="nologin-img" alt="Ícone de Perfil do usuário"></a>
+                <% } %>
+            </div>
+    
+            <nav id="u-sessao">
+                <ul>
+                    <li id="login-btn"><a href="/login"><span class="material-icons">login</span>Login</a></li>
+                    <li id="cadastro-btn"><a href="/cadastro-page"><span class="material-icons">add_circle_outline</span>Cadastrar-se</a></li>
+                    
+                    <% if(autenticado){
+                        if(login){%>
+                       
+                       <% } 
+                
+                       
+                   %>
+
+                   <script>
+                    var btn_login = document.getElementById("login-btn");
+                    btn_login.style.display = "none";
+
+                    var btn_cadastro = document.getElementById("cadastro-btn");
+                    btn_cadastro.style.display = "none";
+                   </script>
+    
+                    <li><a href="/perfil"><span class="material-icons">person_outline</span>Meu perfil</a></li>
+                    <li><a href="/sair" method="POST" id="sair-btn"><span class="material-icons">logout</span>Sair</a></li>
+                
+                    <% }else{ %>
+    
+                    <% } %>
+    
+                    <!-- <li><a href="/sair" method="POST" id="sair-btn">Sair</a></li> -->
+                </ul>
+            </nav>
+    
+        </header>
+
+        <nav class="menu">
+            <input type="checkbox">
+            <div class="menu-hamb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/radio">Radio</a></li>
+                <li><a href="#contato-ancora">Contato</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="perfil-login">
+
+            <a href="/login" id="entrar-btn">Entrar</a>
+
+            <a href="/login" id="IconePerfil"><img src="icons/profile.svg" alt="Ícone de Perfil do usuário"></a>
+
+        </div>
+        
+    </header>
+
+        <main>
+
+            <div class="radio">
+
+                <img src="icons/microfone.png" id="mic"alt="Microfone rádio">
+                <h1>Rádio</h1>
+
+            </div>
+            
+            <p id="subtitulo">Lovesong - Leo Utah</p>
+            
+            <figure>
+                <img src="imagens/1radio.jpg" id="bkg-radio">
+                <figcaption id="titulo-musica">Lovesong</figcaption>
+                <p id="subtitulo">Leo Urah</p>
+            <figure>
+
+            <audio src="Canon in D (Pachelbel) - Violin & Piano (128 kbps).mp3" controls></audio>
+
+            <h3>Mais Rádios</h3>
+
+            <section class="radioarts">
+
+                <div class="a-radios">
+
+                    <figure>
+                        <a href="#"><img src="imagens/1radio.jpg"></a>
+                        <figcaption>1° Radio</figcaption>
+                    <figure>
+
+                    <figure>
+                        <a href="#"><img src="imagens/2radio.jpg"></a>
+                        <figcaption>2° Radio</figcaption>
+                    <figure>
+
+                    <figure>
+                        <a href="#"><img src="imagens/3radio.jpg"></a>
+                        <figcaption>3° Radio</figcaption>
+                    <figure>
+
+                    <figure>
+                        <a href="#"><img src="imagens/4radio.jpg"></a>
+                        <figcaption>4° Radio</figcaption>
+                    <figure>
+
+                    <figure>
+                        <a href="#"><img src="imagens/5radio.jpg"></a>
+                        <figcaption>5° Radio</figcaption>
+                    <figure>
+
+                    <figure>
+                        <a href="#"><img src="imagens/6radio.jpg"></a>
+                        <figcaption>6° Radio</figcaption>
+                    <figure>
+
+                    <figure>
+                        <a href="#"><img src="imagens/7radio.jpg"></a>
+                        <figcaption>7° Radio</figcaption>
+                    <figure>
+                 
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <footer>
+
+            <div class="blocofooter">
+    
+                <div class="ShartsGroup">
+                    <img src="icons/Logotipo-sharts.svg" id="LogoShartsFooter" alt="Logotipo Sharts">
+                    <h2>Group</h2>
+    
+                    <div class="redes-sociais-contato">
+    
+                        <span id="contato-ancora"></span>
+    
+                        <a href="#"><img src="icons/facebook.png" alt="Logo facebook"></a>
+                        <a href="#"><img src="icons/instagram.png" alt="Logo instagram"></a>
+                        <a href="#"><img src="icons/reddit.png" alt="Logo reddit"></a>
+    
+                    </div>
+                </div>
+    
+                <ul>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Sharts Music+</a></li>
+                    <li><a href="#">Sharts para artistas</a></li>
+                    <li><a href="/termosECond">Termos e condições</a></li>
+                    <li>2022</li>
+                </ul>
+    
+            </div>
+    
+        </footer>
+
+
+        <script src="js/script.js"></script>
+        <script src="js/script_menu.js"></script>
+    </body>
+    </html>

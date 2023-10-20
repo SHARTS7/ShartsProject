@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (max-width: 480px) {
+
+/*----------main----------*/
+
+#img_sobrenos{
+    display: flex;
+    margin: 0 auto;
+    width: 90vw;
+}
+
+.s_nos p{
+    text-align: center;
+    margin: 10px 20px;
+}
+
+/*---Categorias---*/
+
+#categorias-title{
+    margin: 30px 0 20px 0;
+    text-align: left;
+	font-weight: bold;
+}
+
+.rolagem-categorias{
+    margin: 15px 5vw;
+    width: 90vw;
+	height: 230px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth
+}
+
+.rolagem-categorias::-webkit-scrollbar { 
+	display: none;
+}
+
+.categorias{
+    display: flex;
+    height: 230px;
+}
+
+.categorias figcaption{
+	margin-top: 175px;
+	margin-left: -110px;
+	font-size: 1.2rem;
+}
+
+.categorias img{
+	margin-right: 20px;
+	border-radius: 30px;
+	width: 35vw; 
+	height: 35vw;
+	scroll-snap-align: start;
+}
+
+}
+@media (max-width: 400px){
+	.redes-sociais-contato img{
+		float: right;
+		margin-left: 20px;
+		width: px;
+	}
+	#tvideo{
+		font-size: 14px;
+	}
+}
+@media (max-width: 400px) and (min-width: 311px){
+	.manual-nav, .autonav{
+		top: 98vw;
+	}
+}
+@media (max-width: 310px) and (min-width: 281px){
+	.manual-nav, .autonav{
+		top: 105vw;
+	}
+}
+@media (max-width: 280px){
+	.manual-nav, .autonav{
+		top: 103vw;
+	}
+}

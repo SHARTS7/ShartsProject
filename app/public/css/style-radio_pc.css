@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (min-width: 481px) {
+
+/*----------main----------*/
+
+.radio{
+	display: flex;
+	width: 42%;
+	margin: 65px auto 0 auto;
+	align-items: center;
+	justify-content: center;
+}
+
+#mic{
+	float: left;
+	width: 40px;
+	height: 40px;
+}
+
+h1{
+	font-size: 3rem;
+	color: #f7334e;
+}
+
+#subtitulo{
+	text-align: center;
+	font-size: 1.3rem;
+}
+
+#bkg-radio{
+	display: block;
+	width: 320px;
+	height: 320px;
+	margin: 18px auto;
+	box-shadow: 5px 10px 0px #f7334e;
+	border-radius: 50px;
+}
+
+#titulo-musica{
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 800;
+}
+
+audio{
+	display: block;
+	width: 320px;
+	height: 60px;
+	margin: 18px auto;
+	border-radius: 50px;
+}
+
+
+/*---Radios dos artistas---*/
+
+h3{
+	font-size: 1.3rem;
+	text-align: center;
+	margin-top: 70px;
+}
+
+.radioarts{
+	margin: 15px 5vw;
+	width: 90vw;
+	height: 230px;
+	overflow: hidden;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+}
+
+.radioarts::-webkit-scrollbar{
+	display: none;
+}
+
+.radioperfil{
+	display: flex;
+	width: 90vw;
+	height: 60px;
+	margin-bottom: 15px;
+	margin-left: 5vw;
+}
+
+.radioperfil h3{
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.radioperfil button{
+	font-size: 1.2rem;
+	border: 3px solid #f7334e;
+	background-color: initial;
+	border-radius: 20px;
+	margin-left: 10px;
+	margin-top: 9px;
+	padding: 12.5px 10px;
+	color: #f7334e;
+	transition: 0.5s;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.radioperfil button:hover{
+	background-color: #ff8a9a;
+}
+
+/*-----*/
+
+.a-radios{
+	display: flex;
+}
+
+.a-radios figure{
+	display: flex;
+}
+
+.a-radios figcaption{
+	font-size: 1rem;
+	width: 102px;
+	position: absolute;
+	margin-top: 12vw;
+	transition: 0.5s;
+}
+
+.a-radios img{
+	margin-right: 20px;
+	border-radius: 30px;
+	width: 11.5vw; 
+	height: 11.5vw;
+	scroll-snap-align: start;
+}
+
+/*---Rodapé---*/
+
+}

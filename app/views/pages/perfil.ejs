@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharts</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="icons/logoresponsivaA.svg">
+    <link rel="stylesheet" href="css/style-perfil_mb.css">
+    <link rel="stylesheet" href="css/style-perfil_pc.css">
+    <link rel="stylesheet" href="css/style_pc.css">
+    <link rel="stylesheet" href="css/style_mb.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/notify.js"></script>
+</head>
+<body>
+    <header>
+
+        <a href="/" id="LogoSharts"><img src="icons/Logotipo-sharts.svg" alt="Logotipo Sharts"></a>
+
+        <nav class="menu">
+            <input type="checkbox">
+            <div class="menu-hamb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul>
+                <li><a href="/radio">Radio</a></li>
+                <li><a href="#contato-ancora">Contato</a></li>
+                <% if (tipo_usuario === 2) { %>
+                    <li><a href="/painel_adm" style="background-color: #f7334e; padding: 5px">Painel Administrativo</a></li>
+                <% } %>
+            </ul>
+
+        </nav>
+
+        <div class="perfil-login">
+
+            <a href="#" id="entrar-btn"><span><%= autenticado.autenticado %></span></a>
+            <!-- <a href="#" id="IconePerfil"><img src="icons/profile.svg" alt="Ícone de Perfil do usuário"></a> -->
+            <% if(autenticado){
+                %>
+               
+            <% 
+        
+               let arquivo = {"imagem":"imagens/img-perfil.png"};
+        
+               if(img_perfil_pasta != null){ 
+                    arquivo.imagem = img_perfil_pasta;
+               }
+            %>
+        
+
+           <div class="perfil-radius">
+            <div></div>
+            <a href="#" id="IconePerfil"><img class="icone-perfil" src="<%= arquivo.imagem %>"></a>
+        </div>
+        
+            <% }else{ %>
+                <a href="#" id="IconePerfil"><img src="icons/profile.svg" id="nologin-img" alt="Ícone de Perfil do usuário"></a>
+            <% } %>
+        </div>
+
+        <nav id="u-sessao">
+            <ul>
+                <li id="login-btn"><a href="/login"><span class="material-icons">login</span>Login</a></li>
+                <li id="cadastro-btn"><a href="/cadastro-page"><span class="material-icons">add_circle_outline</span>Cadastrar-se</a></li>
+                <% if(autenticado){ %>
+
+               <script>
+                var btn_login = document.getElementById("login-btn");
+                btn_login.style.display = "none";
+
+                var btn_cadastro = document.getElementById("cadastro-btn");
+                btn_cadastro.style.display = "none";
+               </script>
+               <li><a href="/perfil"><span class="material-icons">person_outline</span>Meu perfil</a></li>
+                <li><a href="/sair" method="POST" id="sair-btn"><span class="material-icons">logout</span>Sair</a></li>
+            
+                <% }else{ %>
+
+                <% } %>
+
+                <!-- <li><a href="/sair" method="POST" id="sair-btn">Sair</a></li> -->
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <% 
+
+        let arquivo = {"imagem":"imagens/img-perfil.png"}
+     
+        if(valores.img_perfil_pasta != null){
+            arquivo.imagem = valores.img_perfil_pasta
+        }
+
+    let msgErro = {"nome":"", "email":"" }
+    let avisoErro = {"nome":"", "email":""}
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nome"){
+                avisoErro.nome = "erro";
+                msgErro.nome += " "+itemErro.msg
+            %>
+            <script>
+                notify("Erro no preenchimento","Verifique o campo nome<br><%= itemErro.msg%>", "error", "center")                        
+            </script>
+            <%
+        }
+        if(itemErro.path == "email"){
+            avisoErro.email = "erro";
+            msgErro.email = itemErro.msg
+            %>
+            <script>
+                notify("Erro no preenchimento","Verifique o campo e-mail", "error", "center")                        
+            </script>
+            <%
+        }
+        })
+    }
+    
+    if (dadosNotificacao) { 
+
+        %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){
+                        window.location="/"
+                    }, 3000)
+                }                        
+        </script>
+    <% } %>
+
+        <div class="text-editp">
+            <h4>Editar Perfil</h4>
+        </div>
+
+        <h4 id="text-editp2">Edite suas informações aparentes no seu perfil</h4>
+
+        <section class="editperfil">
+
+            <form action="/perfil" method="POST" enctype="multipart/form-data">
+
+                <label for="nome" id="lblnome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome" value="<%= valores.nome %>" class="<%= avisoErro.nome %>">
+            
+                <!-- <label for="nomeu">Nome de usuário</label>
+                <input type="text" name="nomeu" id="nomeu"placeholder="Digite seu nome de usuário"> -->
+
+                <label for="email" id="lblemail">E-mail</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu email" value="<%= valores.email %>" class="<%= avisoErro.email %>">
+
+                
+                <label for="img-perfil">Imagem de perfil</label>
+                <div class="load-image">
+                    <img class="imagem-perfil" src="<%= arquivo.imagem %>" id="img-preview" alt="Imagem Preview">
+                    <input type="file" name="img-perfil" id="img-perfil" onchange="loadImg()">
+                </div>
+
+                <label for="senha" id="lblsenha">Não preencha este campo para manter a senha atual</label>
+                <input type="password" name="senha" id="senha" placeholder="Sua senha">
+
+                <label for="categoria" id>Categoria</label>
+
+                <br>
+
+                <select name="categoria" id="categoria">
+                    <option value="artesvisuais">Artes Visuais</option>
+                    <option value="cinema">Cinema</option>
+                    <option value="danca">Dança</option>
+                    <option value="musica">Música</option>
+                    <option value="teatro">Teatro</option>
+                    <option value="fotografia">Fotografia</option>
+                </select>
+
+                <br>
+
+                <label for="bio">Bio</label>
+                <input type="text" name="bio" id="bio" placeholder="Insira sua Bio">
+            
+                <div class="funcoes-finais">
+                    <button id="cancelar-btn">Cancelar</button>
+                    <button id="aplicar-btn" type="submit" value="Alterar dados perfil">Aplicar</button>
+                </div>
+
+            </form>
+
+            <button id="exc_conta" onclick="abrirPopUp()">
+                <span class="material-symbols-outlined" title="Excluir minha conta">delete</span>
+                Excluir minha conta
+              </button>
+              
+              <div class="pop-up">
+                  <div class="modal">
+                      <hr />
+                      <h2>Você tem certeza que deseja continuar?</h2>
+                      <span>Ao continuar o usuário selecionado será desativado!</span>
+                      <hr />
+                      <div class="btns">
+                          <button class="btn-sim" onclick="desativarUsuario()">Sim</button>
+                          <button class="btn-nao" onclick="closePopUp()">Não</button>
+                      </div>
+                  </div>
+              </div>
+
+            <script>
+                function abrirPopUp() {
+  const modal = document.querySelector(".pop-up");
+  modal.classList.add('active');
+
+}
+
+function closePopUp() {
+  const modal = document.querySelector(".pop-up");
+  modal.classList.remove('active');
+}
+
+async function desativarUsuario() {
+  if (confirm("Tem certeza que deseja desativar sua conta?")) {
+    try {
+      const response = await fetch('/desativar-m-usuario', {
+        method: 'POST',
+      });
+
+      if (response.ok) {
+        location.href = '/sair';
+        console.log("Usuário desativado com sucesso!")
+      } else {
+        console.error("Erro ao desativar o usuário:", response.statusText);
+        alert("Erro ao desativar o usuário. Por favor, tente novamente.");
+      }
+    } catch (error) {
+      console.error("Erro ao desativar o usuário:", error);
+      alert("Erro ao desativar o usuário. Por favor, tente novamente.");
+    }
+  }
+}
+
+            </script>
+              
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <div class="blocofooter">
+
+            <div class="ShartsGroup">
+                <img src="icons/Logotipo-sharts.svg" id="LogoShartsFooter" alt="Logotipo Sharts">
+                <h2>Group</h2>
+
+                <div class="redes-sociais-contato">
+
+                    <span id="contato-ancora"></span>
+
+                    <a href="#"><img src="icons/facebook.png" alt="Logo facebook"></a>
+                    <a href="#"><img src="icons/instagram.png" alt="Logo instagram"></a>
+                    <a href="#"><img src="icons/reddit.png" alt="Logo reddit"></a>
+
+                </div>
+            </div>
+
+            <ul>
+                <li><a href="/sobrenos">Sobre nós</a></li>
+                <li><a href="#">Sharts Music+</a></li>
+                <li><a href="#">Sharts para artistas</a></li>
+                <li><a href="/termosECond">Termos e condições</a></li>
+                <li>2022</li>
+            </ul>
+
+        </div>
+
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/script_menu.js"></script>
+</body>
+</html>

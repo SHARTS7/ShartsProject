@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (max-width: 480px) {
+
+    /*Cabeçalho*/
+
+    header {
+        display: flex;
+        background-color: #202020;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    nav span {
+        display: table;
+        background-color: white;
+        padding: 1vw 5vw;
+        margin: 6px;
+        border-radius: 2px;
+        transition: 0.5s;
+    }
+
+    .menu-hamb {
+        float: left;
+        order: 1;
+        margin-left: 2.7vw;
+        z-index: 2;
+    }
+
+    #LogoSharts {
+        margin: 0 auto;
+        margin-top: 5px;
+        order: 2;
+        width: 30vw;
+    }
+
+    .perfil-login{
+        width: 10vw;
+        float: right;
+        margin: 3px 4vw 0 0;
+        order: 3;
+    }
+
+    #entrar-btn{
+        display: none;
+    }
+
+    #IconePerfil {
+        width: 100%;
+        order: 3;
+    }
+
+    .perfil-radius{
+        width: 38px;
+        height: 38px;
+        overflow: hidden;
+        border-radius: 100%;
+        align-items: center;
+        float: right;
+    }
+
+    #IconePerfil img{
+        width: 38px;
+        height: 38px;
+        order: 3;
+    }
+
+    .material-icons {
+        background-color: transparent;
+        padding: 5px;
+      }
+
+    /****Sessão de usuário*****/
+
+#u-sessao{
+	/* display: none; */
+	display: none;
+	text-decoration: none;
+    position: absolute;
+    float: right;
+    width: 190px;
+	/* height: 210px; */
+	background-color: #cccccc;
+	border: none;
+    transform: none;
+    right: 0;
+    top: 80px;
+    border-bottom-left-radius: 30px;
+    border-left: 3px solid #f7334e;
+    border-bottom: 3px solid #f7334e;
+    border-right: 3px solid #f7334e;
+    transform: translate(-110%, 0);
+	transition: transform 0.6s;
+	padding-top: 5px;
+	padding-bottom: -45px;
+    z-index: 30;
+}
+
+#u-sessao ul a:not(#sair-btn){
+    display: flex;
+    text-decoration: none;
+    color: black;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    margin: 10px;
+    font-size: 0.9em;
+    border-radius: 20px;
+}
+
+#u-sessao li {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+#sair-btn{
+    display: flex;
+    justify-content: center;
+    background-color: #f7334e;
+    color: white;
+    text-decoration: none;;
+    align-items: center;
+    margin: 10px;
+    font-size: 0.9em;
+    border-radius: 20px;
+}
+
+/*-----------------*/
+
+    .menu input {
+        width: 11vw;
+        height: 11vw;
+        position: absolute;
+        top: 3.2vw;
+        left: 5.5vw;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 4;
+    }
+
+    .menu input:checked~ul {
+        transform: none;
+        z-index: 1;
+    }
+
+    .menu input:checked~.menu-hamb {
+        position: absolute;
+        top: 15px;
+        z-index: 3;
+    }
+
+    .menu input:checked~.menu-hamb span {
+        background-color: #202020;
+    }
+
+    .menu input:checked~.menu-hamb span:first-child {
+        display: none;
+    }
+
+    .menu input:checked~.menu-hamb span:nth-child(2) {
+        position: relative;
+        top: 14px;
+        transform: rotate(45deg);
+    }
+
+    .menu input:checked~.menu-hamb span:nth-child(3) {
+        transform: rotate(135deg);
+    }
+
+    .menu ul {
+        display: block;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 258px;
+        background-color: #f7334e;
+        border: none;
+        border-bottom-right-radius: 30px;
+        transform: translate(-110%, 0);
+        transition: transform 0.6s;
+        padding-top: 75px;
+        padding-bottom: -45px;
+        z-index: 1;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: black;
+        padding: 10px 30px;
+        background-color: white;
+        font-size: 1.1em;
+        border-radius: 20px;
+    }
+
+    .menu li {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 35px;
+        font-size: 1rem;
+
+    }
+
+
+    /*---Rodapé---*/
+
+    footer {
+        background-color: #424242;
+        height: 550px;
+    }
+
+    .blocofooter {
+        width: 90vw;
+        margin: 0 auto;
+        padding-top: 1vw;
+    }
+
+    .ShartsGroup {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        width: 90vw;
+    }
+
+    #LogoShartsFooter {
+        float: left;
+        margin: 0px 0;
+        width: 20%;
+    }
+
+    footer h2 {
+        color: white;
+        margin-left: 5px;
+        float: left;
+    }
+
+    .redes-sociais-contato {
+        margin-left: auto;
+    }
+
+    .redes-sociais-contato img {
+        float: right;
+        margin-left: 20px;
+        width: 30px;
+    }
+
+    footer li {
+        margin: 20px 0;
+        color: white;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: white;
+    }
+
+}

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharts - Planos</title>
+    <link rel="shortcut icon" href="icons/logoresponsivaA.svg">
+    <link rel="stylesheet" href="css/style-planos.css">
+    <link rel="stylesheet" href="css/style_mb.css">
+    <link rel="stylesheet" href="css/style_pc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="js/notify.js"></script>
+</head>
+
+<body>
+    <header>
+
+        <a href="/" id="LogoSharts"><img src="icons/Logotipo-sharts.svg" alt="Logotipo Sharts"></a>
+
+        <nav class="menu">
+            <input type="checkbox">
+            <div class="menu-hamb">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul>
+                <li><a href="/radio">Radio</a></li>
+                <li><a href="#contato-ancora">Contato</a></li>
+                <% if (tipo_usuario === 2) { %>
+                    <li><a href="/painel_adm" style="background-color: #f7334e; padding: 5px">Painel Administrativo</a></li>
+                <% } %>
+            </ul>
+
+        </nav>
+
+        <div class="perfil-login">
+
+            <a href="#" id="entrar-btn"><span><%= autenticado.autenticado %></span></a>
+            <!-- <a href="#" id="IconePerfil"><img src="icons/profile.svg" alt="Ícone de Perfil do usuário"></a> -->
+            <% if(autenticado.autenticado){
+                if(login){%>
+               <script>
+                   notify("Bem vindo (a) à página, <%= autenticado.autenticado%> !", "success", "center")                        
+               </script>
+               <% } 
+        
+               let arquivo = {"imagem":"imagens/img-perfil.png"};
+        
+               if(img_perfil_pasta != null){ 
+                    arquivo.imagem = img_perfil_pasta;
+               }
+           %>
+        
+
+           <div class="perfil-radius">
+            <div></div>
+            <a href="#" id="IconePerfil"><img class="icone-perfil" src="<%= arquivo.imagem %>"></a>
+        </div>
+        
+            <% }else{ %>
+                <a href="#" id="IconePerfil"><img src="icons/profile.svg" id="nologin-img" alt="Ícone de Perfil do usuário"></a>
+            <% } %>
+        </div>
+
+        <nav id="u-sessao">
+            <ul>
+                <li id="login-btn"><a href="/login"><span class="material-icons">login</span>Login</a></li>
+                <li id="cadastro-btn"><a href="/cadastro-page"><span class="material-icons">add_circle_outline</span>Cadastrar-se</a></li>
+                <% if(autenticado.autenticado){
+                    %>
+
+               <script>
+                var btn_login = document.getElementById("login-btn");
+                btn_login.style.display = "none";
+
+                var btn_cadastro = document.getElementById("cadastro-btn");
+                btn_cadastro.style.display = "none";
+               </script>
+               <li><a href="/perfil"><span class="material-icons">person_outline</span>Meu perfil</a></li>
+                <li><a href="/sair" method="POST" id="sair-btn"><span class="material-icons">logout</span>Sair</a></li>
+            
+                <% }else{ %>
+
+                <% } %>
+
+                <!-- <li><a href="/sair" method="POST" id="sair-btn">Sair</a></li> -->
+            </ul>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <img src="icons/Logotipo-sharts.svg" id="LogoSharts-page" alt="Logotipo Sharts">
+        <h1>Nossos Planos</h1>
+
+        <section class="sharts-plan">
+
+            <div class="plan1">
+
+                <img src="icons/sharts-form.png" id="sharts-form" alt="Forma Sharts">
+
+                <div class="plan1-sub">
+                    <h2>SEM INTERRUPÇÕES</h2>
+                    <ul>
+                        <li>Sem anúncios</li>
+                        <li>Acesso a músicas sem limitações</li>
+                    </ul>
+
+                    <span>R$</span>
+                    <span id="preco-plano">9,90</span>
+                    <span>mês</span>
+                </div>
+
+            </div>
+
+            <div class="plan2">
+
+                <img src="icons/sharts-form.png" id="sharts-form-2" alt="Forma Sharts">
+
+                <div class="plan2-sub">
+                    <h2>SHARTS PRO</h2>
+                    <ul>
+                        <li>Conteúdos exclusivos</li>
+                        <li>Sem propagandas</li>
+                        <li>Descontos</li>
+                        <li>E muito mais!</li>
+                    </ul>
+
+                    <span>R$</span>
+                    <span id="preco-plano">9,90</span>
+                    <span>mês</span>
+                </div>
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+    <footer>
+
+        <div class="blocofooter">
+
+            <div class="ShartsGroup">
+                <img src="icons/Logotipo-sharts.svg" id="LogoShartsFooter" alt="Logotipo Sharts">
+                <h2>Group</h2>
+
+                <div class="redes-sociais-contato">
+
+                    <span id="contato-ancora"></span>
+
+                    <a href="#"><img src="icons/facebook.png" alt="Logo facebook"></a>
+                    <a href="#"><img src="icons/instagram.png" alt="Logo instagram"></a>
+                    <a href="#"><img src="icons/reddit.png" alt="Logo reddit"></a>
+
+                </div>
+            </div>
+
+            <ul>
+                <li><a href="/sobrenos">Sobre nós</a></li>
+                <li><a href="#">Sharts Music+</a></li>
+                <li><a href="#">Sharts para artistas</a></li>
+                <li><a href="/termosECond">Termos e condições</a></li>
+                <li>2022</li>
+            </ul>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+    <script src="js/script_menu.js"></script>
+</body>
+
+</html>

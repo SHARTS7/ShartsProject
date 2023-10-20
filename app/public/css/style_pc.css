@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+	border: 0;
+	font-family: 'Space Grotesk', sans-serif;
+	list-style-type: none;
+}
+
+@media only screen and (min-width: 481px) {
+
+    header {
+        background-color: #121212;
+        width: 100%;
+        height: 52px;
+    }
+
+    .menu span,
+    input {
+        display: block;
+    }
+
+    #LogoSharts img {
+        float: left;
+        order: 1;
+        margin: 8px;
+        width: 79.11px;
+        height: 38.05px;
+    }
+
+    .menu input {
+        position: absolute;
+        top: -100vw;
+    }
+
+    .perfil-login{
+        display: flex;
+        align-items: center;
+        float: right;
+        font-size: 0.8rem;
+    }
+
+    #nologin-img{
+        margin: 8px;
+    }
+
+    #entrar-btn{
+        float: right;
+        color: white;
+        text-decoration: none;
+        align-items: center;
+    }
+
+    .perfil-radius{
+        width: 38px;
+        height: 38px;
+        overflow: hidden;
+        border-radius: 100%;
+        margin: 8px;
+        align-items: center;
+        float: right;
+    }
+
+    #IconePerfil img {
+        width: 38px;
+        border-radius: 100%;
+        float: right;
+    }
+
+    .material-icons{
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    /****Sessão de usuário*****/
+
+#u-sessao{
+	/* display: none; */
+	display: none;
+	text-decoration: none;
+    position: absolute;
+    float: right;
+    width: 205px;
+	/* height: 210px; */
+	background-color: #cccccc;
+	border: none;
+    transform: none;
+    right: 0;
+    margin-top: 52px;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-left: 3px solid #f7334e;
+    border-bottom: 3px solid #f7334e;
+    border-right: 3px solid #f7334e;
+    transform: translate(-110%, 0);
+	transition: transform 0.6s;
+	padding-top: 5px;
+	padding-bottom: -45px;
+    z-index: 30;
+}
+
+#u-sessao ul a:not(#sair-btn){
+    display: flex;
+    text-decoration: none;
+    color: black;
+    padding: 5px 15px;
+    justify-content: center;
+    background-color: white;
+    align-items: center;
+    font-size: 1em;
+    border-radius: 20px;
+}
+
+#u-sessao ul a:not(#sair-btn):hover{
+    background: linear-gradient(90deg, rgba(255,0,188,1) 0%, rgba(255,112,1,1) 100%);
+    color: white;
+}
+
+#u-sessao li{
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+    font-size: 1rem;
+}
+
+#padm-btn-menu{
+    background-color: #f7334e; 
+    padding: 5px;
+}
+
+#sair-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7334e;
+    color: white;
+    padding: 5px 15px;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 20px;
+}
+
+#sair-btn:hover{
+    background: linear-gradient(90deg, #f7334e 0%, rgba(255,112,1,1) 100%);
+}
+
+/*-----------------*/
+
+    .perfil-login:hover {
+        opacity: .8;
+    }
+
+    .menu ul {
+        float: left;
+        order: 2;
+        padding: 14px 14px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+
+    .menu li {
+        position: relative;
+        display: inline-block;
+        font-size: 0.8rem;
+        margin-left: 30px;
+    }
+
+    .menu li:hover {
+        border-bottom: 3px solid #f7334e;
+        transition-duration: 0.1s;
+    }
+
+    /*---Rodapé---*/
+
+    footer {
+        background-color: #424242;
+        height: 550px;
+    }
+
+    .blocofooter {
+        width: 90vw;
+        margin: 100px auto 0 auto;
+        padding-top: 1vw;
+    }
+
+    .ShartsGroup {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        width: 90vw;
+    }
+
+    #LogoShartsFooter {
+        float: left;
+        margin: 0px 0;
+        width: 10%;
+    }
+
+    footer h2 {
+        color: white;
+        margin-left: 5px;
+        float: left;
+    }
+
+    .redes-sociais-contato {
+        margin-left: auto;
+    }
+
+    .redes-sociais-contato img {
+        float: right;
+        margin-left: 20px;
+        width: 30px;
+    }
+
+
+    footer li {
+        margin: 20px 0;
+        color: white;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: white;
+    }
+
+}
+
